@@ -7,6 +7,10 @@
   let editEl;
   let editable = false;
 
+  let width;
+  let btnShowIcon;
+  $: btnShowIcon = width < 576;
+
   function save() {
     title = titleEl.innerText;
     onUpdate();
@@ -40,7 +44,7 @@
 <style>
   .header {
     position: relative;
-    margin-top: 2em;
+    padding-top: 2em;
   }
 
   .header-title {
@@ -74,7 +78,6 @@
     position: relative;
     top: -1.5px;
     left: 8px;
-
     font-style: normal;
     font-weight: bold;
     font-size: 14px;
@@ -97,6 +100,17 @@
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
   }
+  @media (max-width: 576px) {
+    .header {
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+    }
+    .header-button {
+      position: relative;
+      width: 50px;
+      margin-right: 1em;
+    }
+  }
 
   .outline {
     outline-color: black;
@@ -111,7 +125,6 @@
 <div class="header is-full-width is-vertical-align">
   <div class="header-title">
     <h1
-      id="header_title_text"
       class="header-title-text"
       bind:this={titleEl}
       class:outline={editable}
@@ -137,5 +150,16 @@
       <span>Edit</span>
     </div>
   </div>
-  <button class="header-button" on:click={onNewList}>New List</button>
+  <button
+    class="header-button"
+    class:icon-only={btnShowIcon}
+    on:click={onNewList}>
+    {#if btnShowIcon}
+      <img
+        src="https://icongr.am/entypo/add-to-list.svg?size=24"
+        alt="new list" />
+    {:else}New List{/if}
+  </button>
 </div>
+
+<svelte:window bind:innerWidth={width} />

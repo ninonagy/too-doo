@@ -2,9 +2,12 @@
   import { navigate } from "svelte-routing";
   import { onMount } from "svelte";
 
+  import { fade } from "svelte/transition";
+
   import Header from "../components/Header.svelte";
   import TodoInput from "../components/TodoInput.svelte";
   import TodoList from "../components/TodoList.svelte";
+  import Footer from "../components/Footer.svelte";
 
   import {
     listStore,
@@ -36,8 +39,20 @@
   }
 </script>
 
+<style>
+  .container {
+    max-width: 700px;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      width: 90%;
+    }
+  }
+</style>
+
 {#if loaded}
-  <div class="container">
+  <div class="container" transition:fade>
     <Header
       bind:title
       onUpdate={async () => {
@@ -53,9 +68,6 @@
 
     <TodoList bind:todos onUpdate={todo => saveTodo(todo)} />
 
-    <footer style="margin-top: 200px; text-align: center;">
-      <h2>Too Doo</h2>
-      <p>Your to-dos have never been simpler.</p>
-    </footer>
+    <Footer />
   </div>
 {/if}

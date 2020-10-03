@@ -8,6 +8,9 @@
   ul {
     list-style-type: none;
     padding: 0;
+    margin: 0;
+    min-height: 250px;
+    height: auto;
   }
   ul li {
     margin-bottom: 32px;
