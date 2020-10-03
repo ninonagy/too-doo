@@ -1,19 +1,16 @@
-// import { writable } from "svelte/store";
-
 import api from "./api";
-
-// export const listsStore = writable([]);
 
 export const getListWithTodos = async (slug) => {
   return api.get(`/api/lists/${slug}.json`);
 };
 
 export const createList = async () => {
-  return api.post(`/api/lists.json`);
+  let list = await api.post(`/api/lists.json`);
+  return list;
 };
 
-export const saveList = async ({ list_id, title }) => {
-  return api.put(`/api/lists/${list_id}.json`, { title });
+export const saveList = async ({ slug, title }) => {
+  return api.put(`/api/lists/${slug}.json`, { title });
 };
 
 export const createTodo = async (todo) => {

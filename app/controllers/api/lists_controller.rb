@@ -24,9 +24,9 @@ module Api
       end
     end
 
-    # PUT /api/lists/{id}.json
+    # PUT /api/lists/{slug}.json
     def update
-      list = List.find_by(params[:id])
+      list = List.find_by(slug: params[:slug])
       if list.update(list_params)
         render json: list
       else
