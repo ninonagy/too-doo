@@ -1,0 +1,16 @@
+{
+  "name": "too_doo",
+  "private": true,
+  "dependencies": {
+    "@rails/actioncable": "^6.0.0",
+    "@rails/ujs": "^6.0.0",
+    "@rails/webpacker": "4.3.0",
+    "svelte-loader": "^2.13.6"
+  },
+  "version": "0.1.0",
+  "devDependencies": {
+    "webpack-dev-server": "^3.11.0",
+    "svelte": "^3.29.0",
+    "tinro": "^0.3.7"
+  }
+}
