@@ -39,6 +39,5 @@ yarn-debug.log*
 
 /package-lock.json
 /yarn.lock
-/Gemfile.lock
 .env
 
