@@ -1,8 +1,8 @@
 class CreateLists < ActiveRecord::Migration[6.0]
   def change
     create_table :lists do |t|
-      t.string :slug
-      t.string :title
+      t.text :slug
+      t.text :title
 
       t.timestamps
     end
