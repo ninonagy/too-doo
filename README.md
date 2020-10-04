@@ -1,24 +1,45 @@
-# README
+## How to run
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Run commands:
 
-Things you may want to cover:
+`$ bundle install`
 
-* Ruby version
+`$ yarn install`
 
-* System dependencies
+`$ rake db:setup`
 
-* Configuration
+`$ rake db:migrate`
 
-* Database creation
+### PostgreSQL database setup
 
-* Database initialization
+Before you continue, make sure you have installed [PostgreSQL](https://www.postgresql.org/download) on your machine.
 
-* How to run the test suite
+Configure _database.yml_ in your Rails config folder with something like this. Be sure to replace `<username>` and `<password>` with your own fields.
 
-* Services (job queues, cache servers, search engines, etc.)
+```yaml
+default: &default
+  adapter: postgresql
+  username: <username>
+  password: <password>
+  pool: 5
+  timeout: 5000
 
-* Deployment instructions
+development:
+  <<: *default
+  database: my_db_dev
 
-* ...
+test:
+  <<: *default
+  database: my_db_test
+
+production:
+  <<: *default
+  database: my_db_prod
+```
+
+To create a user and to add a permission to create databases you need to type following commands in _psql_ shell.
+
+```bash
+$ create user <username> with password '<password>';
+$ alter user <username> createdb;
+```
