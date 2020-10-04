@@ -10,6 +10,8 @@ Run commands:
 
 `$ rake db:migrate`
 
+When all dependencies are installed, run a server with `rails server` command. 
+
 ### PostgreSQL database setup
 
 Before you continue, make sure you have installed [PostgreSQL](https://www.postgresql.org/download) on your machine.
